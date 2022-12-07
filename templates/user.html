@@ -9,6 +9,32 @@
 
     {% endfor %}
 
+    <div class="mt-5 d-flex justify-content-center card py-5 ps-5">
+        <div class="card-body">
+                <h2 class="text-center">Informações</h2>
+            
+            <div class="modal-body ps-3">
+                <div class="row">
+                    <div class="col">
+                        <p>Nome: {{vinculo.nome}}</p>
+                        <p>Email: {{user_data.email}}</p>
+                        <p>Situação: {{vinculo.situacao}}</p>
+                        <p>Vinculo: {{user_data.tipo_vinculo}}</p>
+                        <p>Curso: {{vinculo.curso}}</p>
+                        <p>Campus: {{vinculo.campus}}</p>
+                        
+                    </div>
+                    <div class="col">
+                        
 
+                    </div>
+                   
+                </div>
+                
+
+            </div>
+            
+        </div>
+    </div>
 
 {% endblock %}
