@@ -9,8 +9,8 @@ oauth = OAuth(app)
 
 suap = oauth.remote_app(
     'suap',
-    consumer_key="key",
-    consumer_secret="secret",
+    consumer_key="zWTE5HwaNukiFVSueeJXMsyrRKq284iWmEapZbIl",
+    consumer_secret="vJb5cIXfb3CE8emP80T05z2uqsTawgCY7b43Km6CH5TKUvNZUUd1cZq3iOYAUrCfnvM0VyV402gtZSnS7jTbugmAl4MdAc0xtG56onCAa2jfSMMbqNvEdD9h0JWULqZ7",
     base_url='https://suap.ifrn.edu.br/api/',
     request_token_url=None,
     access_token_method='POST',
@@ -32,6 +32,36 @@ def index():
 def login():
     return suap.authorize(callback=url_for('authorized', _external=True))
 
+@app.route('/boletins', methods=['GET', 'POST'])
+def boletins():
+    if 'suap_token' in session:
+        if request.method == 'GET':
+            periodos_letivos_do_aluno = suap.get('v2/minhas-informacoes/meus-periodos-letivos/')
+            ano_letivo = []
+            for periodo in periodos_letivos_do_aluno.data:
+                if periodo['ano_letivo'] not in ano_letivo:
+                    ano_letivo.append(periodo['ano_letivo'])
+            ano_letivo.sort(reverse=True)
+            me = suap.get('v2/minhas-informacoes/boletim/{ano}/{periodo}'.format(ano=2022, periodo=1))
+            return render_template('boletins.html', boletins=me.data, ano=2022, periodo=1, ano_letivo=ano_letivo)
+        if request.method == 'POST':
+            periodos_letivos_do_aluno = suap.get('v2/minhas-informacoes/meus-periodos-letivos/')
+            ano_letivo = []
+            for periodo in periodos_letivos_do_aluno.data:
+                if periodo['ano_letivo'] not in ano_letivo:
+                    ano_letivo.append(periodo['ano_letivo'])
+            ano_letivo.sort(reverse=True)
+            ano = request.form['ano']
+            ano = int(ano)
+            periodo = request.form['periodo']
+            me = suap.get('v2/minhas-informacoes/boletim/{ano}/{periodo}'.format(ano=ano, periodo=periodo))
+            if 'detail' in me.data:
+                me.data = None
+            return render_template('boletins.html', boletins=me.data, ano=ano, periodo=periodo, ano_letivo=ano_letivo)
+
+    else:
+        return render_template('index.html')
+    
 
 @app.route('/logout')
 def logout():
