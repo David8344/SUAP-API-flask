@@ -25,7 +25,16 @@
                         
                     </div>
                     <div class="col">
+                        <p>Nome: {{user_data.nome_usual}}</p>
+                        <p>Email: {{user_data.email}}</p>
+                        <p>Situação: {{vinculo.situacao}}</p>
+                        <p>Vinculo: {{user_data.tipo_vinculo}}</p>
+                        <p>Curso: {{vinculo.curso}}</p>
+                        <p>Campus: {{vinculo.campus}}</p>
                         
+                    </div>
+                    <div class="col">
+                        <img src="https://suap.ifrn.edu.br/{{user_data.url_foto_150x200}}"src="https://suap.ifrn.edu.br/{{user_data.url_foto_150x200}}" width="100" class="rounded-circle">
 
                     </div>
                    
@@ -34,7 +43,11 @@
 
             </div>
             
+            
         </div>
+
+        
     </div>
+    
 
 {% endblock %}
