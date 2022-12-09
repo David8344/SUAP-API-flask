@@ -32,13 +32,13 @@
                   <thead>
                          <tr>
                                 <th scope="col">Disciplina</th>
-                                <th scope="col">1º Bimestre</th>
+                                <th scope="col"> Nota 1º Bimestre</th>
                                 <th scope="col">Faltas</th>
-                                <th scope="col">2º Bimestre</th>
+                                <th scope="col">Nota 2º Bimestre</th>
                                 <th scope="col">Faltas</th>
-                                <th scope="col">3º Bimestre</th>
+                                <th scope="col">Nota 3º Bimestre</th>
                                 <th scope="col">Faltas</th>
-                                <th scope="col">4º Bimestre</th>
+                                <th scope="col">Nota 4º Bimestre</th>
                                 <th scope="col">Faltas</th>
                                 <th scope="col">Media</th>
                                 <th scope="col">Situação</th>
@@ -49,16 +49,16 @@
                                 {% for boletim in boletins %}
                                 <tr>
                                        <td>{{ boletim.disciplina }}</td>
-                                       <td>Nota: {{ boletim.nota_etapa_1.nota }} </td>
+                                       <td>{{ boletim.nota_etapa_1.nota }} </td>
                                        <td>{{ boletim.nota_etapa_1.faltas }}</td>
-                                       <td>Nota: {{ boletim.nota_etapa_2.nota }} </td>
+                                       <td>{{ boletim.nota_etapa_2.nota }} </td>
                                        <td>{{ boletim.nota_etapa_2.faltas }}</td>
-                                       <td>Nota: {{ boletim.nota_etapa_3.nota }} </td>
+                                       <td>{{ boletim.nota_etapa_3.nota }} </td>
                                        <td>{{ boletim.nota_etapa_3.faltas }}</td>
-                                       <td>Nota: {{ boletim.nota_etapa_4.nota }} </td>
+                                       <td>{{ boletim.nota_etapa_4.nota }} </td>
                                        <td>{{ boletim.nota_etapa_4.faltas }}</td>
-                                       <td>{{boletim.media_disciplina}}</td>
-                                       <td>{{boletim.situacao}}</td>
+                                       <td>{{ boletim.media_disciplina }}</td>
+                                       <td>{{ boletim.situacao }}</td>
                                 </tr>
                                 {% endfor %}
 

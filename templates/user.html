@@ -1,20 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h2>{% block title %} {{ user_data['nome'] }} {% endblock %}</h2>
-
-    {% for field in user_data %}
-
-    <p> <b>{{ field }}</b>: {{ user_data[field] }} </p>
-
-    {% endfor %}
-
+    
     <div class="mt-5 d-flex justify-content-center card py-5 ps-5">
         <div class="card-body">
                 <h2 class="text-center">Informações</h2>
             
             <div class="modal-body ps-3">
                 <div class="row">
+                    <div class="col">
+                        <img src="https://suap.ifrn.edu.br/{{user_data.url_foto_150x200}}"src="https://suap.ifrn.edu.br/{{user_data.url_foto_150x200}}" width="200" class="rounded-circle">
+
+                    </div>
                     <div class="col">
                         <p>Nome: {{vinculo.nome}}</p>
                         <p>Email: {{user_data.email}}</p>
@@ -25,18 +22,14 @@
                         
                     </div>
                     <div class="col">
-                        <p>Nome: {{user_data.nome_usual}}</p>
-                        <p>Email: {{user_data.email}}</p>
-                        <p>Situação: {{vinculo.situacao}}</p>
-                        <p>Vinculo: {{user_data.tipo_vinculo}}</p>
-                        <p>Curso: {{vinculo.curso}}</p>
-                        <p>Campus: {{vinculo.campus}}</p>
+                        <p>Nome usual: {{user_data.nome_usual}}</p>
+                        <p>Data de nascimento: {{user_data.data_nascimento}}</p>
+                        <p>Situação sistemica: {{vinculo.situacao_sistemica}}</p>
+                        <p>CPF: {{user_data.cpf}}</p>
+                       
                         
                     </div>
-                    <div class="col">
-                        <img src="https://suap.ifrn.edu.br/{{user_data.url_foto_150x200}}"src="https://suap.ifrn.edu.br/{{user_data.url_foto_150x200}}" width="100" class="rounded-circle">
-
-                    </div>
+                    
                    
                 </div>
                 
